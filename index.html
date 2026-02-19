@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedEdu - Portal Ilmu Kedokteran Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0066CC;
+            --primary-dark: #004C99;
+            --primary-light: #E6F2FF;
+            --secondary: #00A86B;
+            --secondary-light: #E8F5E9;
+            --accent: #FF6B35;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --dark-gray: #333333;
+            --text-gray: #666666;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #FFD700;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 40px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        /* Anatomy Section */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .anatomy-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .anatomy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .anatomy-icon {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+        }
+
+        .anatomy-content {
+            padding: 25px;
+        }
+
+        .anatomy-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .anatomy-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .anatomy-content ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .anatomy-content li {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* Physiology Section */
+        .physiology-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .physiology-section h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .physiology-section p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .physiology-section ul {
+            padding-left: 25px;
+        }
+
+        .physiology-section li {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Diseases Section */
+        .diseases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .disease-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .disease-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .disease-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .disease-card .symptoms {
+            background: var(--primary-light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .disease-card .symptoms h4 {
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .disease-card .symptoms ul {
+            padding-left: 18px;
+        }
+
+        .disease-card .symptoms li {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .disease-card .treatment {
+            background: var(--secondary-light);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .disease-card .treatment h4 {
+            color: #007A4D;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .disease-card .treatment p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Medical Dictionary */
+        .dictionary-search {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .dictionary-search input {
+            width: 100%;
+            padding: 18px 25px;
+            padding-right: 60px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .dictionary-search input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,102,204,0.1);
+        }
+
+        .dictionary-search button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .dictionary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .dictionary-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .dictionary-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .dictionary-item .term {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .dictionary-item .english {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .dictionary-item .definition {
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        /* Calculator Section */
+        .calculator-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .calculator-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .calculator-card label {
+            display: block;
+            color: var(--dark-gray);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .calculator-card input,
+        .calculator-card select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-card input:focus,
+        .calculator-card select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .calculator-card button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-card button:hover {
+            background: var(--primary-dark);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result-box .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .result-box .category {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-top: 10px;
+        }
+
+        /* First Aid Section */
+        .firstaid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .firstaid-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .firstaid-header {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 100%);
+            padding: 20px 25px;
+            color: var(--white);
+        }
+
+        .firstaid-header h3 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .firstaid-body {
+            padding: 25px;
+        }
+
+        .firstaid-body ol {
+            padding-left: 20px;
+        }
+
+        .firstaid-body li {
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            line-height: 1.7;
+            padding-left: 5px;
+        }
+
+        .firstaid-body li::marker {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Medicine Section */
+        .medicine-table {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .medicine-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .medicine-table th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .medicine-table td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text-gray);
+        }
+
+        .medicine-table tr:hover {
+            background: var(--primary-light);
+        }
+
+        .medicine-table .warning {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 5% 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .medicine-table {
+                overflow-x: auto;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .modal h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .modal h3 {
+            color: var(--primary-dark);
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .modal p, .modal li {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .modal ul {
+            padding-left: 25px;
+        }
+
+        .modal li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">⚕</div>
+                MedEdu
+            </div>
+            <div class="nav-links">
+                <a href="#beranda">Beranda</a>
+                <a href="#anatomi">Anatomi</a>
+                <a href="#fisiologi">Fisiologi</a>
+                <a href="#penyakit">Penyakit</a>
+                <a href="#kamus">Kamus Medis</a>
+                <a href="#kalkulator">Kalkulator</a>
+                <a href="#pertolongan-pertama">P3K</a>
+                <a href="#obat">Obat</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h1>Portal Ilmu Kedokteran <span>Indonesia</span></h1>
+            <p>Selamat datang di MedEdu - sumber pengetahuan kedokteran terlengkap dalam bahasa Indonesia. Pelajari anatomi, fisiologi, penyakit, dan banyak lagi secara gratis.</p>
+            <div class="hero-buttons">
+                <a href="#anatomi" class="btn btn-primary">Mulai Belajar</a>
+                <a href="#kalkulator" class="btn btn-secondary">Kalkulator Kesehatan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">9</div>
+            <div class="stat-label">Sistem Organ</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Penyakit Umum</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Istilah Medis</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Panduan P3K</div>
+        </div>
+    </div>
+
+    <!-- Anatomy Section -->
+    <section id="anatomi">
+        <div class="section-header">
+            <h2>Anatomi Manusia</h2>
+            <p>Pelajari struktur dan sistem organ tubuh manusia secara mendalam</p>
+        </div>
+        <div class="anatomy-grid">
+            <div class="anatomy-card" onclick="openModal('skeletal')">
+                <div class="anatomy-icon">🦴</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Rangka</h3>
+                    <p>Sistem pendukung dan perlindungan tubuh manusia yang terdiri dari tulang-tulang.</p>
+                    <ul>
+                        <li>Tulang axial (tengkorak, vertebra, rusuk)</li>
+                        <li>Tulang appendicular (anggota gerak)</li>
+                        <li>Jumlah tulang: 206 tulang</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('muscular')">
+                <div class="anatomy-icon">💪</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Otot</h3>
+                    <p>Sistem yang memungkinkan gerakan tubuh dan mempertahankan postur.</p>
+                    <ul>
+                        <li>Otot skelet (otot lurik)</li>
+                        <li>Otot polos (otot tak sadar)</li>
+                        <li>Otot jantung (miokardium)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('cardiovascular')">
+                <div class="anatomy-icon">❤️</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Kardiovaskular</h3>
+                    <p>Sistem sirkulasi darah yang mengangkut nutrisi dan oksigen ke seluruh tubuh.</p>
+                    <ul>
+                        <li>Jantung (4 ruang: atrium & ventrikel)</li>
+                        <li>Pembuluh darah (arteri, vena, kapiler)</li>
+                        <li>Darah (plasma, sel darah merah, putih, trombosit)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('respiratory')">
+                <div class="anatomy-icon">🫁</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Pernapasan</h3>
+                    <p>Sistem yang bertanggung jawab untuk pertukaran gas (O₂ dan CO₂).</p>
+                    <ul>
+                        <li>Saluran atas (hidung, faring, laring)</li>
+                        <li>Saluran bawah (trakea, bronkus, paru-paru)</li>
+                        <li>Alveoli (pertukaran gas)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('digestive')">
+                <div class="anatomy-icon">🍽️</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Pencernaan</h3>
+                    <p>Sistem yang memproses makanan menjadi nutrisi yang dapat diserap tubuh.</p>
+                    <ul>
+                        <li>Saluran cerna (mulut hingga anus)</li>
+                        <li>Organ aksesori (hati, pankreas, kantung empedu)</li>
+                        <li>Panjang total: ± 9 meter</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('nervous')">
+                <div class="anatomy-icon">🧠</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Saraf</h3>
+                    <p>Sistem kontrol dan komunikasi tubuh yang memproses informasi.</p>
+                    <ul>
+                        <li>Sistem saraf pusat (otak, medula spinalis)</li>
+                        <li>Sistem saraf tepi (saraf kranial & spinal)</li>
+                        <li>100 miliar neuron</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('endocrine')">
+                <div class="anatomy-icon">⚗️</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Endokrin</h3>
+                    <p>Sistem kelenjar yang menghasilkan hormon untuk regulasi tubuh.</p>
+                    <ul>
+                        <li>Kelenjar hipofisis (master gland)</li>
+                        <li>Kelenjar tiroid dan paratiroid</li>
+                        <li>Kelenjar adrenal, pankreas, gonad</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('lymphatic')">
+                <div class="anatomy-icon">🛡️</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Limfatik</h3>
+                    <p>Sistem pertahanan tubuh dan keseimbangan cairan jaringan.</p>
+                    <ul>
+                        <li>Pembuluh limfe</li>
+                        <li>Organ limfoid (limpa, tonsil, timus)</li>
+                        <li>Sel imun (limfosit, makrofag)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anatomy-card" onclick="openModal('urinary')">
+                <div class="anatomy-icon">💧</div>
+                <div class="anatomy-content">
+                    <h3>Sistem Urinari</h3>
+                    <p>Sistem yang bertanggung jawab untuk menyaring darah dan membuang limbah.</p>
+                    <ul>
+                        <li>Ginjal (2 buah, fungsi filtrasi)</li>
+                        <li>Ureter (saluran ke kandung kemih)</li>
+                        <li>Kandung kemih dan uretra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Physiology Section -->
+    <section id="fisiologi">
+        <div class="section-header">
+            <h2>Fisiologi Manusia</h2>
+            <p>Pelajari bagaimana organ-organ tubuh bekerja dan berfungsi</p>
+        </div>
+        
+        <div class="physiology-section">
+            <h3>🫀 Fungsi Jantung</h3>
+            <p>Jantung adalah organ pompa yang memompa darah ke seluruh tubuh melalui kontraksi ritmis. Jantung dewasa berdetak sekitar 60-100 kali per menit dengan volume sekira 70 mL per denyut.</p>
+            <ul>
+                <li><strong>Fase diastol:</strong> Jantung relaksasi dan terisi darah</li>
+                <li><strong>Fase sistol:</strong> Jantung berkontraksi dan memompa darah</li>
+                <li><strong>Cardiac output:</strong> ± 5 liter per menit pada dewasa normal</li>
+                <li><strong>Sistem konduksi:</strong> SA node → AV node → Bundle of His → Purkinje fibers</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🫁 Fungsi Paru-Paru</h3>
+            <p>Paru-paru adalah organ utama sistem pernapasan yang bertanggung jawab untuk pertukaran gas antara darah dan udara. Paru-paru dewasa mengandung sekitar 300-500 juta alveoli dengan luas permukaan total ± 70 m².</p>
+            <ul>
+                <li><strong>Tidal volume:</strong> ± 500 mL per napas normal</li>
+                <li><strong>Frekuensi napas:</strong> 12-20 kali per menit pada dewasa</li>
+                <li><strong>Pertukaran gas:</strong> O₂ masuk ke darah, CO₂ keluar di alveoli</li>
+                <li><strong>Kapasitas vital:</strong> ± 4.5 liter udara maksimal</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🫘 Fungsi Ginjal</h3>
+            <p>Ginjal adalah organ filtrasi yang bertanggung jawab untuk menyaring darah, membuang limbah metabolik, dan menjaga keseimbangan elektrolit serta cairan tubuh.</p>
+            <ul>
+                <li><strong>Filtrasi glomerulus:</strong> ± 180 liter darah per hari</li>
+                <li><strong>Urine produksi:</strong> 1-2 liter per hari</li>
+                <li><strong>Fungsi:</strong> Regulasi tekanan darah, produksi eritropoietin, aktivasi vitamin D</li>
+                <li><strong>Nefron:</strong> ± 1 juta nefron per ginjal</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🫀 Fungsi Hati</h3>
+            <p>Hati adalah organ terbesar dalam tubuh dengan lebih dari 500 fungsi vital. Hati memproses nutrisi, memproduksi protein, menyimpan glikogen, dan mendetoksifikasi zat berbahaya.</p>
+            <ul>
+                <li><strong>Berat:</strong> ± 1.5 kg pada dewasa</li>
+                <li><strong>Fungsi metabolisme:</strong> Metabolisme karbohidrat, protein, lemak</li>
+                <li><strong>Detoksifikasi:</strong> Menetralkan racun dan obat-obatan</li>
+                <li><strong>Produksi empedu:</strong> ± 1 liter per hari untuk pencernaan lemak</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🧠 Fungsi Otak</h3>
+            <p>Otak adalah pusat kontrol sistem saraf yang mengatur semua fungsi tubuh, pemikiran, memori, dan emosi. Otak terdiri dari 100 miliar neuron dan menggunakan 20% oksigen tubuh.</p>
+            <ul>
+                <li><strong>Berat:</strong> ± 1.4 kg (2% berat tubuh)</li>
+                <li><strong>Konsumsi glukosa:</strong> ± 120 gram per hari</li>
+                <li><strong>Regio otak:</strong> Frontotemporal, parietal, oksipital, temporal</li>
+                <li><strong>Memori:</strong> Short-term dan long-term storage</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🦴 Fungsi Tulang</h3>
+            <p>Tulang adalah jaringan ikat yang keras yang membentuk kerangka tubuh, melindungi organ internal, dan berfungsi sebagai tempat produksi sel darah.</p>
+            <ul>
+                <li><strong>Jumlah tulang:</strong> 206 tulang pada dewasa</li>
+                <li><strong>Komposisi:</strong> 65% mineral (kalsium fosfat), 35% matriks organik</li>
+                <li><strong>Sumsum merah:</strong> Produksi sel darah (eritropoiesis)</li>
+                <li><strong>Pergantian tulang:</strong> Remodeling setiap 10 tahun</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>💉 Fungsi Darah</h3>
+            <p>Darah adalah cairan tubuh yang mengangkut nutrisi, oksigen, hormon, dan limbah ke seluruh tubuh. Darah terdiri dari plasma, sel darah merah, sel darah putih, dan trombosit.</p>
+            <ul>
+                <li><strong>Volume darah:</strong> ± 5 liter (7-8% berat badan)</li>
+                <li><strong>Sel darah merah:</strong> 4-6 juta/mm³ - transport O₂</li>
+                <li><strong>Sel darah putih:</strong> 4.000-11.000/mm³ - sistem imun</li>
+                <li><strong>Trombosit:</strong> 150.000-400.000/mm³ - pembekuan darah</li>
+            </ul>
+        </div>
+
+        <div class="physiology-section">
+            <h3>🧬 Fungsi Sistem Imun</h3>
+            <p>Sistem imun adalah mekanisme pertahanan tubuh terhadap pathogen dan sel abnormal. Sistem ini terdiri dari imunitas innate (bawaan) dan adaptif (didapat).</p>
+            <ul>
+                <li><strong>Imunitas innate:</strong> Barrier fisik, fagosit, sel NK</li>
+                <li><strong>Imunitas adaptif:</strong> Limfosit T dan B, antibodi</li>
+                <li><strong>Antibodi:</strong> Protein IgG, IgM, IgA, IgD, IgE</li>
+                <li><strong>Vaksin:</strong> Merangsang pembentukan imunitas</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Diseases Section -->
+    <section id="penyakit">
+        <div class="section-header">
+            <h2>Penyakit Umum</h2>
+            <p>Pelajari gejala, penyebab, dan pengobatan penyakit umum di Indonesia</p>
+        </div>
+        
+        <div class="diseases-container">
+            <div class="disease-card">
+                <h3>🤒 Demam Berdarah Dengue (DBD)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Demam tinggi mendadak (38-40°C)</li>
+                        <li>Sakit kepala berat, terutama di dahi</li>
+                        <li>Nyeri belakang mata (retro-orbital)</li>
+                        <li>Nyeri otot dan sendi (breakbone fever)</li>
+                        <li>Mual dan muntah</li>
+                        <li>Ruam kulit (bintik merah)</li>
+                        <li>Pendarahan (gusi, mimisan)</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Paracetamol untuk demam, istirahat cukup, minum cairan elektrolit, hindari aspirin/ibuprofen. Pasien dengan tanda bahaya harus segera dirawat di rumah sakit untuk terapi cairan IV dan pemantauan trombosit.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🤧 Influenza</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Demam mendadak</li>
+                        <li>Bersin dan pilek</li>
+                        <li>Sakit tenggorokan</li>
+                        <li>Nyeri otot dan tubuh</li>
+                        <li>Sakit kepala</li>
+                        <li>Batuk kering</li>
+                        <li>Kelelahan</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Istirahat, minum banyak cairan, paracetamol untuk demam. Antivirus oseltamivir efektif jika diberikan dalam 48 jam pertama. Vaksinasi tahunan direkomendasikan untuk kelompok risiko tinggi.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>💩 Diare</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Feses cair atau encer (3x atau lebih/hari)</li>
+                        <li>Sakit dan kram perut</li>
+                        <li>Mual dan muntah</li>
+                        <li>Demam</li>
+                        <li>Dehidrasi (mulut kering, pusing)</li>
+                        <li>Urine gelap</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Oralit untuk replace elektrolit, minum banyak cairan, BRAT diet (banana, rice, apple, toast). Antibiotik hanya untuk diare bacterial. Probiotik membantu pemulihan.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🤢 Mabuk Laut (Motion Sickness)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Mual dan ingin muntah</li>
+                        <li>Pusing dan kehilangan keseimbangan</li>
+                        <li>Keringat dingin</li>
+                        <li>Hipersalivasi (produksi air liur berlebih)</li>
+                        <li>Sakit kepala</li>
+                        <li>Kelelahan</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Antihistamin (dimenhydrinate, meclizine) 30-60 menit sebelum perjalanan. Scopolamine patch. Tips: lihat ke horizon, duduk di tempat paling stabil, hindari alkohol.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🦟 Malaria</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Demam tinggi mendadak</li>
+                        <li>Menggigil</li>
+                        <li>Keringat berlebihan</li>
+                        <li>Sakit kepala</li>
+                        <li>Mual dan muntah</li>
+                        <li>Nyeri otot</li>
+                        <li>Anemia</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Obat antimalaria sesuai jenis plasmodium (chloroquine, artemisinin-based combination therapy). Pencegahan: kelambu berinsektisida, obat profilaksis (doxycycline, malarone) untuk viajero ke daerah endemis.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🦠 Tuberkulosis (TBC)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Batuk produktif lebih dari 2 minggu</li>
+                        <li>Demam rendah</li>
+                        <li>Berat badan menurun</li>
+                        <li>Keringat malam</li>
+                        <li>Nyeri dada</li>
+                        <li>Batuk berdarah</li>
+                        <li>Kelelahan kronis</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Terapi OAT (Obat Anti Tuberkulosis) 6 bulan: isoniazid, rifampicin, pyrazinamide, ethambutol. Directly Observed Treatment Short-course (DOTS) untuk memastikan kepatuhan.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🫀 Hipertensi (Tekanan Darah Tinggi)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Sering tanpa gejala (silent disease)</li>
+                        <li>Sakit kepala berat</li>
+                        <li>Pusing dan vertigo</li>
+                        <li>Mual</li>
+                        <li>Gangguan penglihatan</li>
+                        <li>Nyeri dada</li>
+                        <li>Sesak napas</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Perubahan gaya hidup: diet DASH, olahraga reguler, kurangi garam, stop merokok. Obat: ACE inhibitor, ARB, calcium channel blocker, diuretik. Target tekanan darah <130/80 mmHg.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🍬 Diabetes Mellitus</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Poliuria (buang air kecil berlebihan)</li>
+                        <li>Polidipsia (haus berlebihan)</li>
+                        <li>Polifagia (lapar berlebihan)</li>
+                        <li>Berat badan turun</li>
+                        <li>Lemas dan fatigue</li>
+                        <li>Luka lambat sembuh</li>
+                        <li>Gangguan penglihatan</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Diabetes Tipe 1: insulin. Diabetes Tipe 2: metformin, sulfonylurea, GLP-1 agonist. Diet rendah gula, olahraga rutin, monitoring gula darah mandiri. HbA1c target <7%.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>😮‍💨 Asma</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Sesak napas</li>
+                        <li>Napas berbunyi mengi (wheezing)</li>
+                        <li>Batuk, terutama malam/morning</li>
+                        <li>Dada terasa berat</li>
+                        <li>Sulit bicara karena sesak</li>
+                        <li>Gejala kambuh tiba-tiba</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Controller: inhaled corticosteroids (fluticasone, budesonide). Reliever: SABA (salbutamol). Combination: LABA + ICS. Identifikasi dan hindari pemicu. Action plan untuk serangan.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🤢 Gastroenteritis (Muntah-muntah)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Muntah</li>
+                        <li>Diare</li>
+                        <li>Sakit perut/kram</li>
+                        <li>Demam</li>
+                        <li>Mual</li>
+                        <li>Dehidrasi</li>
+                        <li>Kelelahan</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatannya:</h4>
+                    <p>Oralit dan cairan IV jika dehidrasi berat. Antiemetik (ondansetron). Antibiotik jika bacterial (azithromycin). Diet ringan, hindari dairy. Isolasi pasien untuk mencegah penyebaran.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🔥 Luka Bakar</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Derajat I: kemerahan, sakit, bengkak</li>
+                        <li>Derajat II: lepuhan, sangat sakit</li>
+                        <li>Derajat III: kulit gosong, tidak terasa sakit</li>
+                        <li>Derajat IV: jaringan mati (eschar)</li>
+                        <li>Bengkak</li>
+                        <li>Cairan bocor dari luka</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Jalankan air dingin 10-20 menit, jangan oleskan es/lodium/mentega. Bersihkan dengan air mengalir. Oleskan antibiotic ointment dan balut steril. Pain: paracetamol, ibuprofen. Luka bakar besar harus ke dokter.</p>
+                </div>
+            </div>
+
+            <div class="disease-card">
+                <h3>🦴 Patah Tulang (Fraktur)</h3>
+                <div class="symptoms">
+                    <h4>Gejala:</h4>
+                    <ul>
+                        <li>Nyeri berat di lokasi cedera</li>
+                        <li>Bengkak dan memar</li>
+                        <li>Deformitas (bentuk abnormal)</li>
+                        <li>Tidak bisa menggerakkan bagian yang cedera</li>
+                        <li>Krepitasi (suara gesekan tulang)</li>
+                        <li>Mati rasa jika saraf terjepit</li>
+                    </ul>
+                </div>
+                <div class="treatment">
+                    <h4>Pengobatan:</h4>
+                    <p>Immobilisasi dengan splint/cast. Reduksi (menyusun ulang tulang). Fixasi internal (pen, plate) untuk fraktur kompleks. Rehabilitasi dan fisioterapi. Calcium dan vitamin D untuk pemulihan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Dictionary Section -->
+    <section id="kamus">
+        <div class="section-header">
+            <h2>Kamus Kedokteran</h2>
+            <p>Pelajari istilah-istilah medis yang sering digunakan dalam dunia kedokteran</p>
+        </div>
+        
+        <div class="dictionary-search">
+            <input type="text" placeholder="Cari istilah medis...">
+            <button>🔍</button>
+        </div>
+
+        <div class="dictionary-grid">
+            <div class="dictionary-item">
+                <div class="term">Anatomi</div>
+                <div class="english">Anatomy</div>
+                <div class="definition">Ilmu yang mempelajari struktur tubuh manusia dan hubungan antara bagian-bagiannya.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Fisiologi</div>
+                <div class="english">Physiology</div>
+                <div class="definition">Ilmu yang mempelajari fungsi normal organ dan sistem tubuh manusia.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Patologi</div>
+                <div class="english">Pathology</div>
+                <div class="definition">Ilmu yang mempelajari penyakit, penyebab, perkembangan, dan dampaknya pada tubuh.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Diagnosis</div>
+                <div class="english">Diagnosis</div>
+                <div class="definition">Proses menentukan penyakit atau kondisi medis berdasarkan gejala dan pemeriksaan.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Prognosis</div>
+                <div class="english">Prognosis</div>
+                <div class="definition">Prediksi kemungkinan perkembangan dan hasil suatu penyakit.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Etiologi</div>
+                <div class="english">Etiology</div>
+                <div class="definition">Penyebab atau asal-usul suatu penyakit.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Sindrom</div>
+                <div class="english">Syndrome</div>
+                <div class="definition">Kumpulan gejala dan tanda yang karakteristik dari suatu kondisi tertentu.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Kronis</div>
+                <div class="english">Chronic</div>
+                <div class="definition">Kondisi penyakit yang berlangsung lama (lebih dari 3 bulan) atau berlangsung seumur hidup.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Akut</div>
+                <div class="english">Acute</div>
+                <div class="definition">Kondisi penyakit yang mendadak dan berlangsung dalam waktu pendek.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Benigna</div>
+                <div class="english">Benign</div>
+                <div class="definition">Pertumbuhan abnormal yang tidak bersifat kanker dan tidak menyebar ke bagian tubuh lain.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Maligna</div>
+                <div class="english">Malignant</div>
+                <div class="definition">Pertumbuhan kanker yang dapat menyebar ke jaringan lain (metastasis).</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Inflamasi</div>
+                <div class="english">Inflammation</div>
+                <div class="definition">Respons tubuh terhadap cedera atau infeksi, ditandai dengan kemerahan, panas, bengkak, dan nyeri.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Infeksi</div>
+                <div class="english">Infection</div>
+                <div class="definition">Invasi dan perkembangan mikroorganisme pathogen dalam tubuh.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Imunisasi</div>
+                <div class="english">Immunization</div>
+                <div class="definition">Proses memberikan kekabalan terhadap penyakit tertentu melalui vaksin.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Biopsi</div>
+                <div class="english">Biopsy</div>
+                <div class="definition">Pengambilan sampel jaringan untuk pemeriksaan laboratorium.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Profilaksis</div>
+                <div class="english">Prophylaxis</div>
+                <div class="definition">Tindakan pencegahan penyakit.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Terapi</div>
+                <div class="english">Therapy</div>
+                <div class="definition">Pengobatan atau intervensi untuk mengatasi penyakit.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Paliatif</div>
+                <div class="english">Palliative</div>
+                <div class="definition">Perawatan yang bertujuan mengurangi gejala dan meningkatkan kualitas hidup, bukan menyembuhkan.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Komorbiditas</div>
+                <div class="english">Comorbidity</div>
+                <div class="definition">Kehadiran dua atau lebih penyakit secara bersamaan pada satu pasien.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Remisi</div>
+                <div class="english">Remission</div>
+                <div class="definition">Periode ketika gejala penyakit mereda atau menghilang.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Relaps</div>
+                <div class="english">Relapse</div>
+                <div class="definition">Kembali munculnya penyakit setelah periode perbaikan.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Edema</div>
+                <div class="english">Edema</div>
+                <div class="definition">Pembengkakan akibat penumpukan cairan dalam jaringan tubuh.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Nekrosis</div>
+                <div class="english">Necrosis</div>
+                <div class="definition">Kematian sel atau jaringan karena cedera atau penyakit.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Hemoragi</div>
+                <div class="english">Hemorrhage</div>
+                <div class="definition">Pendarahan berat dari pembuluh darah.</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Hipotensi</div>
+                <div class="english">Hypotension</div>
+                <div class="definition">Tekanan darah rendah (di bawah 90/60 mmHg).</div>
+            </div>
+            <div class="dictionary-item">
+                <div class="term">Hipoksia</div>
+                <div class="english">Hypoxia</div>
+                <div class="definition">Kekurangan oksigen dalam jaringan tubuh.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="kalkulator">
+        <div class="section-header">
+            <h2>Kalkulator Kesehatan</h2>
+            <p>Alat hitung kesehatan untuk membantu memantau kondisi tubuh Anda</p>
+        </div>
+
+        <div class="calculator-container">
+            <div class="calculator-card">
+                <h3>📊 BMI Calculator</h3>
+                <label>Berat Badan (kg)</label>
+                <input type="number" id="weight" placeholder="Masukkan berat badan">
+                <label>Tinggi Badan (cm)</label>
+                <input type="number" id="height" placeholder="Masukkan tinggi badan">
+                <button onclick="calculateBMI()">Hitung BMI</button>
+                <div class="result-box" id="bmi-result" style="display: none;">
+                    <div class="value" id="bmi-value">0</div>
+                    <div class="category" id="bmi-category">-</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>🩸 Kalkulator Tekanan Darah</h3>
+                <label>Sistol (mmHg)</label>
+                <input type="number" id="systolic" placeholder="Contoh: 120">
+                <label>Diastol (mmHg)</label>
+                <input type="number" id="diastolic" placeholder="Contoh: 80">
+                <button onclick="calculateBP()">Cek Tekanan Darah</button>
+                <div class="result-box" id="bp-result" style="display: none;">
+                    <div class="value" id="bp-category">-</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>🔥 Kalkulator BMR</h3>
+                <label>Usia (tahun)</label>
+                <input type="number" id="age" placeholder="Masukkan usia">
+                <label>Jenis Kelamin</label>
+                <select id="gender">
+                    <option value="male">Laki-laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
+                <label>Berat Badan (kg)</label>
+                <input type="number" id="bmr-weight" placeholder="Masukkan berat badan">
+                <label>Tinggi Badan (cm)</label>
+                <input type="number" id="bmr-height" placeholder="Masukkan tinggi badan">
+                <button onclick="calculateBMR()">Hitung BMR</button>
+                <div class="result-box" id="bmr-result" style="display: none;">
+                    <div class="value" id="bmr-value">0</div>
+                    <div class="category">kkal/hari</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>💧 Kalkulator Air Putih</h3>
+                <label>Berat Badan (kg)</label>
+                <input type="number" id="water-weight" placeholder="Masukkan berat badan">
+                <label>Tingkat Aktivitas</label>
+                <select id="activity-level">
+                    <option value="1">Sedentari (duduk saja)</option>
+                    <option value="1.2">Ringan (berjalan 1-3 hari/minggu)</option>
+                    <option value="1.4">Sedang (berolahraga 3-5 hari/minggu)</option>
+                    <option value="1.6">Aktif (berolahraga 6-7 hari/minggu)</option>
+                </select>
+                <button onclick="calculateWater()">Hitung Kebutuhan Air</button>
+                <div class="result-box" id="water-result" style="display: none;">
+                    <div class="value" id="water-value">0</div>
+                    <div class="category">liter/hari</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>🏃 Kalkulator Detak Jantung</h3>
+                <label>Usia (tahun)</label>
+                <input type="number" id="hr-age" placeholder="Masukkan usia">
+                <label>Jenis Kelamin</label>
+                <select id="hr-gender">
+                    <option value="male">Laki-laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
+                <button onclick="calculateMaxHR()">Hitung Detak Jantung Maks</button>
+                <div class="result-box" id="hr-result" style="display: none;">
+                    <div class="value" id="hr-value">0</div>
+                    <div class="category">bpm (detak/menit)</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <h3>🤰 Kalkulator Masa Subur</h3>
+                <label>Tanggal Haid Terakhir</label>
+                <input type="date" id="period-date">
+                <label>Durasi Siklus (hari)</label>
+                <input type="number" id="cycle-length" placeholder="Biasanya 28" value="28">
+                <button onclick="calculateFertile()">Hitung Masa Subur</button>
+                <div class="result-box" id="fertile-result" style="display: none;">
+                    <div class="value" id="fertile-value">-</div>
+                    <div class="category">Masa subur Anda</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- First Aid Section -->
+    <section id="pertolongan-pertama">
+        <div class="section-header">
+            <h2>Panduan Pertolongan Pertama (P3K)</h2>
+            <p>Pelajari langkah-langkah pertolongan pertama dalam keadaan darurat</p>
+        </div>
+
+        <div class="firstaid-grid">
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🚨 CPR (Cardiopulmonary Resuscitation)</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Periksa respons korban - tepuk bahu dan panggil nama</li>
+                        <li>Jika tidak responsif, hubungi ambulans (118/119)</li>
+                        <li>Baringkan korban di permukaan datar yang keras</li>
+                        <li>Letakkan tumit tangan di tengah dada, tangan lain di atas</li>
+                        <li>Lakukan kompresi dada sedalam 5-6 cm dengan kecepatan 100-120 kompresi/menit</li>
+                        <li>Setelah 30 kompresi, buka jalan napas dan berikan 2 ventilasi</li>
+                        <li>Ulangi siklus 30:2 hingga bantuan tiba atau korban bergerak</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>💥 Pertolongan Luka Bakar</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Jauhkan korban dari sumber panas</li>
+                        <li>Dinginkan luka bakar dengan air mengalir selama 10-20 menit</li>
+                        <li>Jangan oleskan es, mentega, pasta gigi, atau lotion</li>
+                        <li>Lepaskan perhiasan dan pakaian ketat di sekitar luka (jika tidak melekat)</li>
+                        <li>Tutup luka dengan kassa steril atau kain bersih</li>
+                        <li>Berikan paracetamol untuk mengatasi nyeri</li>
+                        <li>Cari bantuan medis untuk luka bakar luas atau derajat 2-3</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🦴 Pertolongan Patah Tulang</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Jangan menggerakkan bagian yang cedera</li>
+                        <li>Imobilisasi bagian yang cedera dengan splin</li>
+                        <li>Kompres dingin untuk mengurangi bengkak</li>
+                        <li>Berikan analgesik jika tersedia</li>
+                        <li>Cari bantuan medis segera</li>
+                        <li>Jika tulang menembus kulit, tutup dengan kain steril</li>
+                        <li>Jangan mencoba mengembalikan tulang sendiri</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🩸 Pertolongan Pendarahan</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Kenakan sarung tangan jika ada</li>
+                        <li>Tekan langsung pada luka dengan kain bersih</li>
+                        <li>Angkat bagian yang berdarah lebih tinggi dari jantung</li>
+                        <li>Jika darah merembes, tambahkan kain di atas tanpa mengangkat yang pertama</li>
+                        <li>Untuk pendarahan berat di lengan/kaki, pasang torniket jika terlatih</li>
+                        <li>Cari bantuan medis segera</li>
+                        <li>Pantau tanda-tanda syok (pucat, dingin, keringat)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>😰 Pertolong Serangan Panik</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Tenang dan tenangkan korban</li>
+                        <li>Bawa ke tempat tenang dengan sedikit orang</li>
+                        <li>Bantu korban fokus pada napas - hitung 4-7-8</li>
+                        <li>Tarik napas selama 4 detik, tahan 7 detik, hembuskan 8 detik</li>
+                        <li>Pastikan korban mendapat cukup udara</li>
+                        <li>Hindari kafein dan stimulan</li>
+                        <li>Damping dan buat nyaman hingga serangan mereda</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🍽️ Pertolong Tersedak</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Jika korban bisa batuk, biarkan batuk - tanda udara masih lewat</li>
+                        <li>Jika tidak bisa bicara/bernapas, siapakan maneuver Heimlich</li>
+                        <li>Berdiri di belakang korban, lingkarkan tangan di atas pusar</li>
+                        <li>Genggam satu tangan dengan tangan lain, taruh di atas pusar</li>
+                        <li>Lakukan tekanan ke dalam dan ke atas dengan cepat</li>
+                        <li>Ulangi hingga benda keluar atau korban tidak responsif</li>
+                        <li>Jika tidak responsif, mulai CPR dan hubungi ambulans</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🦟 Pertolong Gigitan Ular</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Tenangkan korban dan minimalkan gerakan</li>
+                        <li>Immobilisasi bagian yang tergigit di bawah level jantung</li>
+                        <li>Jangan hisap, hisap, atau potong luka</li>
+                        <li>Jangan pasang torniket atau es</li>
+                        <li>Identifikasi jenis ular jika memungkinkan (foto)</li>
+                        <li>Cari bantuan medis segera - bawa ke RS dengan Unit Gigitan Ular</li>
+                        <li>Pantau tanda-tanda keracunan: bengkak, mual, pendarahan</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🐝 Pertolong Sengatan Lebah</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Keluarkan sengat dengan mengikis (jangan dipencet)</li>
+                        <li>Cuci area dengan air dan sabun</li>
+                        <li>Kompres dingin untuk mengurangi bengkak</li>
+                        <li>Berikan antihistamin oral (cetirizine, loratadine)</li>
+                        <li>Paracetamol untuk nyeri</li>
+                        <li>Cari bantuan medis jika: banyak sengatan, wajah/leher tergigit, tanda anafilaksis</li>
+                        <li>Tanda anafilaksis: kesulitan bernapas, bengkak wajah, pusing</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🌡️ Pertolong Demam Tinggi</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Ukur suhu tubuh dengan termometer</li>
+                        <li>Berikan obat antipiretik: paracetamol 500-1000mg setiap 4-6 jam</li>
+                        <li>Kompres dengan air hangat di dahi, ketiak, dan selangkangan</li>
+                        <li>Pakai baju tipis dan tipis-tipis</li>
+                        <li>Pastikan ruangan teduh dan ventilasi baik</li>
+                        <li>Berikan cairan banyak: air putih, oralit, sup</li>
+                        <li>Cari bantuan medis jika: suhu >39.5°C, kejang, ruam, anak <3 bulan</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>💧 Pertolong Dehidrasi</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Kenali tanda: mulut kering, urine gelap, pusing, lemas</li>
+                        <li>Berikan oralit (1 sach dalam 1 liter air matang)</li>
+                        <li>Minum sedikit-sedikit tapi sering, jangan sekaligus banyak</li>
+                        <li>Hindari kopi, teh kental, dan alkohol</li>
+                        <li>BRAT diet: Banana, Rice, Apple, Toast</li>
+                        <li>Istirahat dan hindari aktivitas berat</li>
+                        <li>Cari bantuan medis jika: tidak bisa minum, muntah terus, urine sangat gelap, pusing berat</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🥴 Pertlong Head Injury (Cedera Kepala)</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Jangan menggerakkan leher jika dugaan cedera tulang belakang</li>
+                        <li>Periksa tingkat kesadaran korban</li>
+                        <li>Kompres es pada benjolan untuk mengurangi bengkak</li>
+                        <li>Awasi tanda-tanda berbahaya selama 24-48 jam</li>
+                        <li>Bangunkan setiap 2-3 jam untuk memastikan responsif</li>
+                        <li>Cari bantuan medis segera jika: muntah berulang, kejang, bicara tidak jelas, pupil tidak sama</li>
+                        <li>Jangan biarkan korban tidur terlalu lama tanpa dibangunkan</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="firstaid-card">
+                <div class="firstaid-header">
+                    <h3>🔥 Pertlong Serangan Jantung</h3>
+                </div>
+                <div class="firstaid-body">
+                    <ol>
+                        <li>Kenali tanda: nyeri dada seperti ditekan, menjalar ke lengan/leher, sesak napas</li>
+                        <li>Hubungi ambulans segera (118/119)</li>
+                        <li>Baringkan korban dalam posisi nyaman</li>
+                        <li>Longgarkan pakaian yang ketat</li>
+                        <li>Jika ada aspirin dan tidak alergi, berikan 1 tablet (300mg)</li>
+                        <li>Siapkan untuk CPR jika korban tidak responsif</li>
+                        <li>Tenangkan korban dan damping hingga bantuan tiba</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medicine Section -->
+    <section id="obat">
+        <div class="section-header">
+            <h2>Daftar Obat-obatan Umum</h2>
+            <p>Informasi obat-obatan yang sering digunakan dalam praktik kedokteran</p>
+        </div>
+
+        <div class="medicine-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Obat</th>
+                        <th>Indikasi</th>
+                        <th>Dosis Dewasa</th>
+                        <th>Efek Samping</th>
+                        <th>Perhatian</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Paracetamol</strong><br>(Acetaminophen)</td>
+                        <td>Demam, nyeri kepala, otot, sendi</td>
+                        <td>500-1000mg setiap 4-6 jam, max 4g/hari</td>
+                        <td>Mual, ruam, toxic pada hati jika overdosis</td>
+                        <td class="warning">Hindari alkohol, hati-hati gangguan hati</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ibuprofen</strong><br>(NSAID)</td>
+                        <td>Nyeri inflamasi, arthritis, dysmenorrhea</td>
+                        <td>200-400mg setiap 6-8 jam dengan makanan</td>
+                        <td>Mual, sakit perut, tukak, gg. ginjal</td>
+                        <td class="warning">Minum setelah makan, hindari jika GG. pencernaan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amoxicillin</strong><br>(Antibiotik)</td>
+                        <td>Infeksi bakteri: ISPA, otitis, sinusitis</td>
+                        <td>250-500mg 3x/hari selama 7-14 hari</td>
+                        <td>Mual, diare, ruam, reaksi alergi</td>
+                        <td class="warning">Hindari jika alergi penicillin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ciprofloxacin</strong><br>(Antibiotik)</td>
+                        <td>Infeksi saluran kemih, diare, anthrax</td>
+                        <td>250-750mg 2x/hari, sesuai infeksi</td>
+                        <td>Mual, diare, tendonitis, gg. SSP</td>
+                        <td class="warning">Hindari susu, jangan bersama antasida</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cetirizine</strong><br>(Antihistamin)</td>
+                        <td>Alergi, rhinitis, urtikaria, biduran</td>
+                        <td>10mg 1x/hari (malam)</td>
+                        <td>Sedasi ringan, mulut kering, sakit kepala</td>
+                        <td class="warning">Tidak untuk anak <2 tahun</td>
+                    </tr>
+                    <tr>
+<td><strong>Loratadine</strong><br>(Antihistamin)</td>
+                        <td>Alergi, rhinitis, biduran</td>
+                        <td>10mg 1x/hari</td>
+                        <td>Sakit kepala, mulut kering, fatigue</td>
+                        <td>Lebih sedikit menyebabkan kantuk</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metformin</strong><br>(Antidiabetik)</td>
+                        <td>Diabetes mellitus tipe 2</td>
+                        <td>500mg 2x/hari, bisa naik bertahap ke max 2550mg/hari</td>
+                        <td>Mual, diare, metallic taste, B12 defisiensi</td>
+                        <td class="warning">Hentikan sementara jika CT-scan dengan kontras</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Salbutamol</strong><br>(Bronkodilator)</td>
+                        <td>Asma, PPOK, bronkospasme</td>
+                        <td>2 puff via inhaler setiap 4-6 jam sesuai kebutuhan</td>
+                        <td>Tremor, takikardia, hipokalemia, guguk</td>
+                        <td>Gunakan spacer untuk hasil optimal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omeprazole</strong><br>(PPI)</td>
+                        <td>GERD, tukaklambung, refluks</td>
+                        <td>20-40mg 1x/hari sebelum makan pagi</td>
+                        <td>Sakit kepala, diare, gg. absorbsi B12</td>
+                        <td class="warning">Penggunaan jangka panjang risiko fraktur</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Domperidone</strong><br>(Antiemetik)</td>
+                        <td>Mual, muntah, dyspepsia</td>
+                        <td>10mg 3x/hari sebelum makan, max 30mg/hari</td>
+                        <td>Mulut kering, gg. jantung (jarang)</td>
+                        <td class="warning">Hindari >4 minggu, tidak untuk GG. jantung</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Captopril</strong><br>(ACE Inhibitor)</td>
+                        <td>Hipertensi, gagal jantung, nefropati.diabetik</td>
+                        <td>12.5-50mg 2-3x/hari</td>
+                        <td>Batuk kering, hiperkalemia, angioedema</td>
+                        <td class="warning">Hindari dalam kehamilan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amlodipine</strong><br>(Calcium Blocker)</td>
+                        <td>Hipertensi, angina</td>
+                        <td>5-10mg 1x/hari</td>
+                        <td>Bengkak kaki, flushing, sakit kepala, pusing</td>
+                        <td>Efek panjang, kontrol BP secara berkala</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Simvastatin</strong><br>(Statin)</td>
+                        <td>Kolesterol tinggi, pencegahan penyakit kardiovaskular</td>
+                        <td>10-40mg 1x/hari malam</td>
+                        <td>Myalgia, gg. hati, rare: rhabdomyolysis</td>
+                        <td class="warning">Hindari grapefruit, kontrol CPK jika keluhan otot</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metronidazole</strong><br>(Antibiotik & Antiprotozoa)</td>
+                        <td>Infeksi bakteri anaerob, trikomoniasis, giardia</td>
+                        <td>250-500mg 3-4x/hari selama 5-10 hari</td>
+                        <td>Mual, metallik taste, urine gelap, disulfiram-like reaction</td>
+                        <td class="warning">Hindari alkohol selama dan 3 hari setelah terapi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dexamethasone</strong><br>(Kortikosteroid)</td>
+                        <td>Inflamasi berat, reaksi alergi, edema otak, asthmaticus</td>
+                        <td>0.5-10mg/hari sesuai indikasi</td>
+                        <td>Hiperglikemia, osteoporosis, moon face, insomnia</td>
+                        <td class="warning">Tapering off jika penggunaan >2 minggu</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MedEdu Indonesia</h4>
+                <p>Portal pembelajaran kedokteran terlengkap dalam bahasa Indonesia. Didedikasikan untuk meningkatkan pengetahuan kesehatan masyarakat Indonesia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Menu Utama</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#anatomi">Anatomi</a></li>
+                    <li><a href="#fisiologi">Fisiologi</a></li>
+                    <li><a href="#penyakit">Penyakit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Layanan</h4>
+                <ul>
+                    <li><a href="#kamus">Kamus Medis</a></li>
+                    <li><a href="#kalkulator">Kalkulator Kesehatan</a></li>
+                    <li><a href="#pertolong-pertama">Panduan P3K</a></li>
+                    <li><a href="#obat">Informasi Obat</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak Darurat</h4>
+                <ul>
+                    <li>Ambulans: 118 / 119</li>
+                    <li>IGD Rumah Sakit Terdekat</li>
+                    <li>Posko Kesehatan Lokal</li>
+                    <li>Nomor Darurat Polisi: 110</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MedEdu Indonesia. Seluruh hak cipta dilindungi.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Disclaimer: Informasi di website ini hanya untuk tujuan edukasi dan tidak menggantikan konsultasi medis profesional. Selalu konsultasikan dengan dokter untuk diagnosis dan pengobatan yang tepat.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="anatomyModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        const modalData = {
+            skeletal: {
+                title: "Sistem Rangka (Skeletal System)",
+                content: `
+                    <p>Sistem rangka adalah kerangka struktural tubuh manusia yang terdiri dari tulang-tulang yang saling terhubung. Sistem ini berfungsi sebagai pendukung tubuh, melindungi organ internal, dan memungkinkan gerakan.</p>
+                    <h3>Fungsi Utama:</h3>
+                    <ul>
+                        <li>Support dan bentuk tubuh</li>
+                        <li>Perlindungan organ vital (otak, jantung, paru-paru)</li>
+                        <li>Produksi sel darah (di sumsum merah)</li>
+                        <li>Penyimpanan mineral (kalsium, fosfor)</li>
+                        <li>Gerakan (bersama sistem otot)</li>
+                    </ul>
+                    <h3>Klasifikasi Tulang:</h3>
+                    <ul>
+                        <li><strong>Tulang axial:</strong> Tengkorak (22 tulang), vertebra (24 vertebra + sacrum + coccyx), rusuk (12 pasang)</li>
+                        <li><strong>Tulang appendicular:</strong> Anggota gerak atas (60 tulang), anggota gerak bawah (60 tulang)</li>
+                    </ul>
+                    <h3>Fakta Menarik:</h3>
+                    <ul>
+                        <li>Tulang terpanjang: Femur (paha)</li>
+                        <li>Tulang terkecil: Stapes (tulang di telinga tengah)</li>
+                        <li>Tulang paling keras: Femur</li>
+                    </ul>
+                `
+            },
+            muscular: {
+                title: "Sistem Otot (Muscular System)",
+                content: `
+                    <p>Sistem otot terdiri dari lebih dari 600 otot yang memungkinkan gerakan tubuh, mempertahankan postur, dan menghasilkan panas tubuh.</p>
+                    <h3>Tipe Otot:</h3>
+                    <ul>
+                        <li><strong>Otot skelet:</strong> Melekat pada tulang, gerakan sadar, memiliki striasi</li>
+                        <li><strong>Otot polos:</strong> Dinding organ internal, gerakan tidak sadar</li>
+                        <li><strong>Otot jantung (miokardium):</strong> Jantung, kontraksi ritmis tidak sadar</li>
+                    </ul>
+                    <h3>Fungsi Utama:</h3>
+                    <ul>
+                        <li>Gerakan tubuh</li>
+                        <li>Mempertahankan postur</li>
+                        <li>Memproduksi panas</li>
+                        <li>Proteksi organ</li>
+                    </ul>
+                `
+            },
+            cardiovascular: {
+                title: "Sistem Kardiovaskular",
+                content: `
+                    <p>Sistem kardiovaskular adalah sistem transportasi tubuh yang terdiri dari jantung, darah, dan pembuluh darah.</p>
+                    <h3>Struktur Jantung:</h3>
+                    <ul>
+                        <li><strong>Atrium kanan:</strong> Menerima darah dari tubuh (poor oxygen)</li>
+                        <li><strong>Ventricle kanan:</strong> Memompa darah ke paru-paru</li>
+                        <li><strong>Atrium kiri:</strong> Menerima darah dari paru-paru (rich oxygen)</li>
+                        <li><strong>Ventricle kiri:</strong> Memompa darah ke seluruh tubuh</li>
+                    </ul>
+                    <h3>Siklus Jantung:</h3>
+                    <ul>
+                        <li><strong>Sistol:</strong> Kontraksi - memompa darah keluar</li>
+                        <li><strong>Diastol:</strong> Relaksasi - jantung terisi darah</li>
+                    </ul>
+                `
+            },
+            respiratory: {
+                title: "Sistem Pernapasan",
+                content: `
+                    <p>Sistem pernapasan bertanggung jawab untuk pertukaran gas antara tubuh dan lingkungan.</p>
+                    <h3>Struktur Saluran Napas:</h3>
+                    <ul>
+                        <li><strong>Saluran atas:</strong> Hidung, faring, laring</li>
+                        <li><strong>Saluran bawah:</strong> Trakea, bronkus, bronkiolus, alveoli</li>
+                    </ul>
+                    <h3>Proses Pertukaran Gas:</h3>
+                    <ul>
+                        <li><strong>Ventilasi:</strong> Pergantian udara di paru-paru</li>
+                        <li><strong>Diffusi:</strong> Perpindahan O₂ dan CO₂ melintasi membran alveoli-kapiler</li>
+                        <li><strong>Transport:</strong> Pengangkutan gas oleh darah</li>
+                    </ul>
+                `
+            },
+            digestive: {
+                title: "Sistem Pencernaan",
+                content: `
+                    <p>Sistem pencernaan memproses makanan menjadi nutrisi yang dapat diserap tubuh.</p>
+                    <h3>Organ Pencernaan:</h3>
+                    <ul>
+                        <li><strong>Saluran cerna:</strong> Mulut → Esofagus → Lambung → Usus halus → Usus besar → Rektum → Anus</li>
+                        <li><strong>Organ aksesori:</strong> Hati, Pankreas, Kantung empedu, Kelenjar saliva</li>
+                    </ul>
+                    <h3>Proses Pencernaan:</h3>
+                    <ul>
+                        <li><strong>Ingesti:</strong> Memasukinya makanan</li>
+                        <li><strong>Digesti:</strong> Pemecahan makanan</li>
+                        <li><strong>Absorpsi:</strong> Penyerapan nutrisi</li>
+                        <li><strong>Ekskresi:</strong> Pembuangan sisa</li>
+                    </ul>
+                `
+            },
+            nervous: {
+                title: "Sistem Saraf",
+                content: `
+                    <p>Sistem saraf adalah sistem kontrol utama tubuh yang memproses informasi dan mengkoordinasikan respons.</p>
+                    <h3>Divisi Sistem Saraf:</h3>
+                    <ul>
+                        <li><strong>Sistem Saraf Pusat (SSP):</strong> Otak (cerebrum, cerebellum, brainstem) dan medula spinalis</li>
+                        <li><strong>Sistem Saraf Tepi (SST):</strong> Saraf kranial (12 pasang), saraf spinal (31 pasang)</li>
+                    </ul>
+                    <h3>Sel Saraf:</h3>
+                    <ul>
+                        <li><strong>Neuron:</strong> Sel yang membawa impuls (100 miliar di otak)</li>
+                        <li><strong>Sel glia:</strong> Sel pendukung dan pelindung</li>
+                    </ul>
+                `
+            },
+            endocrine: {
+                title: "Sistem Endokrin",
+                content: `
+                    <p>Sistem endokrin terdiri dari kelenjar yang memproduksi hormon untuk regulasi fungsi tubuh.</p>
+                    <h3>Kelenjar Utama:</h3>
+                    <ul>
+                        <li><strong>Hipofisis:</strong> Master gland - mengontrol kelenjar lain</li>
+                        <li><strong>Tiroid:</strong> Metabolisme, pertumbuhan</li>
+                        <li><strong>Paratiroid:</strong> Regulasi kalsium</li>
+                        <li><strong>Adrenal:</strong> Respons stres, metabolisme</li>
+                        <li><strong>Pankreas:</strong> Gula darah (insulin, glukagon)</li>
+                        <li><strong>Gonad:</strong> Hormon reproduksi</li>
+                    </ul>
+                `
+            },
+            lymphatic: {
+                title: "Sistem Limfatik",
+                content: `
+                    <p>Sistem limfatik adalah sistem pertahanan tubuh yang juga berperan dalam keseimbangan cairan.</p>
+                    <h3>Komponen:</h3>
+                    <ul>
+                        <li><strong>Pembuluh limfe:</strong> Mengangkut getah bening</li>
+                        <li><strong>Organ limfoid:</strong> Limpa, timus, tonsil, kelenjar getah bening</li>
+                        <li><strong>Sel imun:</strong> Limfosit, makrofag</li>
+                    </ul>
+                    <h3>Fungsi:</h3>
+                    <ul>
+                        <li>Defensa tubuh terhadap infeksi</li>
+                        <li>Penyerapan lemak</li>
+                        <li>Keseimbangan cairan jaringan</li>
+                    </ul>
+                `
+            },
+            urinary: {
+                title: "Sistem Urinari",
+                content: `
+                    <p>Sistem urinari bertanggung jawab untuk menyaring darah dan membuang limbah metabolik.</p>
+                    <h3>Struktur:</h3>
+                    <ul>
+                        <li><strong>Ginjal:</strong> 2 organ berbentuk kacang, fungsi filtrasi</li>
+                        <li><strong>Ureter:</strong> Saluran dari ginjal ke kandung kemih</li>
+                        <li><strong>Kandung kemih:</strong> Penyimpanan urine (capacity 400-600 mL)</li>
+                        <li><strong>Uretra:</strong> Saluran keluar urine</li>
+                    </ul>
+                    <h3>Fungsi Ginjal:</h3>
+                    <ul>
+                        <li>Filtrasi darah</li>
+                        <li>Regulasi elektrolit dan cairan</li>
+                        <li>Produksi eritropoietin</li>
+                        <li>Aktivasi vitamin D</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openModal(system) {
+            const modal = document.getElementById('anatomyModal');
+            const modalBody = document.getElementById('modal-body');
+            const data = modalData[system];
+            
+            if (data) {
+                modalBody.innerHTML = `<h2>${data.title}</h2>${data.content}`;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('anatomyModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('anatomyModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Calculator functions
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (weight && height) {
+                const heightM = height / 100;
+                const bmi = (weight / (heightM * heightM)).toFixed(1);
+                let category = '';
+                
+                if (bmi < 18.5) category = 'Underweight (Kurus)';
+                else if (bmi < 25) category = 'Normal';
+                else if (bmi < 30) category = 'Overweight (Gemuk)';
+                else category = 'Obesitas';
+                
+                document.getElementById('bmi-value').textContent = bmi;
+                document.getElementById('bmi-category').textContent = category;
+                document.getElementById('bmi-result').style.display = 'block';
+            }
+        }
+
+        function calculateBP() {
+            const systolic = parseFloat(document.getElementById('systolic').value);
+            const diastolic = parseFloat(document.getElementById('diastolic').value);
+            
+            if (systolic && diastolic) {
+                let category = '';
+                if (systolic < 90 || diastolic < 60) category = 'Hipotensi (Tekanan Darah Rendah)';
+                else if (systolic < 120 && diastolic < 80) category = 'Normal';
+                else if (systolic < 130 && diastolic < 80) category = 'Elevated';
+                else if (systolic < 140 || diastolic < 90) category = 'Hipertensi Stage 1';
+                else category = 'Hipertensi Stage 2';
+                
+                document.getElementById('bp-category').textContent = category;
+                document.getElementById('bp-result').style.display = 'block';
+            }
+        }
+
+        function calculateBMR() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('bmr-weight').value);
+            const height = parseFloat(document.getElementById('bmr-height').value);
+            
+            if (age && weight && height) {
+                let bmr;
+                if (gender === 'male') {
+                    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+                } else {
+                    bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+                }
+                
+                document.getElementById('bmr-value').textContent = Math.round(bmr);
+                document.getElementById('bmr-result').style.display = 'block';
+            }
+        }
+
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('water-weight').value);
+            const activity = parseFloat(document.getElementById('activity-level').value);
+            
+            if (weight) {
+                const water = (weight * 0.033 * activity).toFixed(1);
+                document.getElementById('water-value').textContent = water;
+                document.getElementById('water-result').style.display = 'block';
+            }
+        }
+
+        function calculateMaxHR() {
+            const age = parseFloat(document.getElementById('hr-age').value);
+            
+            if (age) {
+                const maxHR = 220 - age;
+                document.getElementById('hr-value').textContent = maxHR;
+                document.getElementById('hr-result').style.display = 'block';
+            }
+        }
+
+        function calculateFertile() {
+            const periodDate = new Date(document.getElementById('period-date').value);
+            const cycleLength = parseInt(document.getElementById('cycle-length').value) || 28;
+            
+            if (periodDate) {
+                const ovulation = new Date(periodDate);
+                ovulation.setDate(ovulation.getDate() + cycleLength - 14);
+                
+                const fertileStart = new Date(ovulation);
+                fertileStart.setDate(fertileStart.getDate() - 5);
+                
+                const fertileEnd = new Date(ovulation);
+                fertileEnd.setDate(fertileEnd.getDate() + 1);
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('fertile-value').textContent = 
+                    `${fertileStart.toLocaleDateString('id-ID', options)} - ${fertileEnd.toLocaleDateString('id-ID', options)}`;
+                document.getElementById('fertile-result').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+                </div>
